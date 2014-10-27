@@ -6,6 +6,7 @@
 
 include (AccelerateTarget)
 include (CMakeUnit)
+include (ExportCfgIntDirHelper)
 
 set (COTIRE_MINIMUM_NUMBER_OF_TARGET_SOURCES 1 CACHE BOOL "" FORCE)
 

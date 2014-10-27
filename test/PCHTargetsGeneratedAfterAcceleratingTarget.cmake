@@ -33,4 +33,15 @@ include_directories (${CMAKE_CURRENT_SOURCE_DIR})
 add_executable (${EXECUTABLE} ${SOURCE_FILE})
 psq_accelerate_target (${EXECUTABLE})
 
-assert_target_exists (${EXECUTABLE}_pch)
+# XCode is different - the XCODE_ATTRIBUTE_GCC_PRECOMPILE_PREFIX_HEADER
+# will be set on the target instead
+if (XCODE)
+
+    assert_has_property_with_value (TARGET ${EXECUTABLE}
+                                    XCODE_ATTRIBUTE_GCC_PRECOMPILE_PREFIX_HEADER
+                                    STRING EQUAL "YES")
+else (XCODE)
+
+    assert_target_exists (${EXECUTABLE}_pch)
+
+endif (XCODE)

@@ -1,12 +1,3 @@
 [submodule "cotire"]
 	path = cotire
 	url = git://github.com/sakra/cotire
-[submodule "cmake-unit"]
-	path = cmake-unit
-	url = git://github.com/polysquare/cmake-unit
-[submodule "tooling-cmake-util"]
-	path = tooling-cmake-util
-	url = git://github.com/polysquare/tooling-cmake-util
-[submodule "cmake-parallel-build-target-utils"]
-	path = parallel-build-target-utils
-	url = git://github.com/polysquare/cmake-parallel-build-target-utils

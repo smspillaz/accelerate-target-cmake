@@ -1,19 +1,27 @@
 # /AccelerateTarget.cmake
+#
 # CMake macro which provides a function called psq_accelerate_target, which
 # effectively sets up cotire on it, handles linking requirements between unity
 # builds, and adds the correct dependencies to the unity build target.
 #
-# See LICENCE.md for Copyright information
+# See /LICENCE.md for Copyright information
 
 set (CMAKE_MODULE_PATH
-     ${CMAKE_MODULE_PATH}
-     ${CMAKE_CURRENT_LIST_DIR}/tooling-cmake-util
-     ${CMAKE_CURRENT_LIST_DIR}/parallel-build-target-utils/
-     ${CMAKE_CURRENT_LIST_DIR}/cotire/CMake)
+     "${CMAKE_MODULE_PATH}"
+     "${CMAKE_CURRENT_LIST_DIR}/cotire/CMake")
 
-include (cotire)
-include (ParallelBuildTargetUtils)
-include (PolysquareToolingUtil)
+if (POLICY CMP0059)
+
+    cmake_policy (SET CMP0059 OLD)
+
+endif ()
+
+if (NOT CMAKE_SCRIPT_MODE_FILE)
+    include (cotire)
+endif ()
+
+include ("smspillaz/cmake-multi-targets/ParallelBuildTargetUtils")
+include ("smspillaz/tooling-cmake-util/PolysquareToolingUtil")
 
 # psq_accelerate_target:
 #
@@ -78,6 +86,6 @@ function (psq_accelerate_target TARGET)
                                                      unity
                                                      ${WIRE_DEPS_OPTIONS})
 
-    endif (NOT ACCELERATION_NO_UNITY_BUILD)
+    endif ()
 
-endfunction (psq_accelerate_target)
+endfunction ()

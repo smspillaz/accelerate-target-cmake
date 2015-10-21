@@ -1,0 +1,8 @@
+AppVeyor
+CMake
+cmake
+_pch
+precompile
+precompiled
+TARGET_unity
+_unity

@@ -205,8 +205,8 @@ function (psq_test_skip_generated_files_in_p_c_h_file)
         set (PREFIX_HEADER_FILE
              "${BINARY_OUTPUT_DIR}/cotire/executable_CXX_prefix.hxx")
 
-        # On Ninja and Visual Studio, we have the opposite behavior
-        if ("${CMAKE_GENERATOR}" MATCHES "Ninja|^Visual.*$|^NMake.*$")
+        # On Visual Studio, we have the opposite behavior
+        if ("${CMAKE_GENERATOR}" MATCHES "^Visual.*$|^NMake.*$")
             cmake_unit_assert_that ("${BINARY_DIR}/Header.h"
                                     exists_as_file)
             cmake_unit_assert_that ("${PREFIX_HEADER_FILE}"

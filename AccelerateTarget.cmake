@@ -6,10 +6,6 @@
 #
 # See /LICENCE.md for Copyright information
 
-set (CMAKE_MODULE_PATH
-     "${CMAKE_MODULE_PATH}"
-     "${CMAKE_CURRENT_LIST_DIR}/cotire/CMake")
-
 if (POLICY CMP0059)
 
     cmake_policy (SET CMP0059 OLD)
@@ -17,11 +13,11 @@ if (POLICY CMP0059)
 endif ()
 
 if (NOT CMAKE_SCRIPT_MODE_FILE)
-    include (cotire)
+    include ("cmake/cotire/cotire")
 endif ()
 
-include ("smspillaz/cmake-multi-targets/ParallelBuildTargetUtils")
-include ("smspillaz/tooling-cmake-util/PolysquareToolingUtil")
+include ("cmake/cmake-multi-targets/ParallelBuildTargetUtils")
+include ("cmake/tooling-cmake-util/PolysquareToolingUtil")
 
 # psq_accelerate_target:
 #

@@ -2,6 +2,7 @@ AppVeyor
 CMake
 cmake
 _pch
+POLYSQUARE
 precompile
 precompiled
 TARGET_unity

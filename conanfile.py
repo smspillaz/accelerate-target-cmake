@@ -16,6 +16,14 @@ class AccelerateTargetCMakeConan(ConanFile):
                 "cotire/1.6.6@smspillaz/cotire")
     url = "http://github.com/polysquare/accelerate-target-cmake"
     license = "MIT"
+    options = {
+        "dev": [True, False]
+    }
+    default_options = "dev=False"
+
+    def requirements(self):
+        if self.options.dev:
+            self.requires("cmake-module-common/master@smspillaz/cmake-module-common")
 
     def source(self):
         zip_name = "accelerate-target-cmake.zip"

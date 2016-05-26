@@ -113,31 +113,6 @@ function (psq_test_p_c_h_targets_generated_after_accelerating_target)
                                                         "NMake Makefiles")
 endfunction ()
 
-# Verifies that after calling psq_accelerate_target
-# _pch targets are generated on that target
-function (psq_test_p_c_h_targets_generated_after_cotire_bootstrap)
-
-    function (psq_configure)
-        set (COTIRE_MINIMUM_NUMBER_OF_TARGET_SOURCES 1 CACHE BOOL "" FORCE)
-        set (EXECUTABLE executable)
-        cmake_unit_create_simple_executable ("${EXECUTABLE}"
-                                             GENERATING_FILE
-                                             "${_CURRENT_LIST_FILE}")
-        psq_accelerate_target ("${EXECUTABLE}")
-        cmake_unit_assert_that ("${EXECUTABLE}_pch" target_exists)
-    endfunction ()
-
-    cmake_unit_configure_config_only_test (INVOKE_CONFIGURE OPTIONS
-                                                            LANGUAGES
-                                                            C
-                                                            CXX
-                                           CONFIGURE COMMAND psq_configure
-                                           PRECONFIGURE OPTIONS
-                                                        SKIP_GENERATOR_REGEX
-                                                        "^Visual Studio.*$"
-                                                        "NMake Makefiles")
-endfunction ()
-
 # Tests that the COTIRE_PREFIX_HEADER_IGNORE_PATH property is cleared
 # on accelerated targets
 function (psq_test_prefix_header_cleared_on_target)
